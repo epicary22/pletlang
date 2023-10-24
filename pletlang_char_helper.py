@@ -17,7 +17,7 @@ class PletlangCharHelper:
         :return: The PletlangChar that the object passed in represents.
         """
         if obj is str:
-            return PletlangChar.from_char(obj)
+            return PletlangCharHelper.to_pletlang_char_from_char(obj)
         return PletlangChar.A
 
     @staticmethod
@@ -62,3 +62,4 @@ class PletlangCharHelper:
         else:
             char_index = PletlangCharHelper.VALID_CHARS.index(char)
             # TODO aaaaaaa I need to change the data structure of PletlangChar
+
