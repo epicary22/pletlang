@@ -56,10 +56,13 @@ class PletlangCharHelper:
         :param char: The character to be interpreted into Pletlang.
         :return: The PletlangChar representation of the single character.
     """
-        char = PletlangCharHelper.__to_interpretable_char(char)
-        if char == ' ':
+        pletlang_char_index = PletlangCharHelper.__to_interpretable_int(char)
+        if pletlang_char_index is None:
             return None
         else:
-            char_index = PletlangCharHelper.VALID_CHARS.index(char)
-            # TODO aaaaaaa I need to change the data structure of PletlangChar
+            return PletlangCharHelper.to_pletlang_char_from_int(pletlang_char_index)
+
+    @staticmethod
+    def to_pletlang_char_from_int(pletlang_char_index: int) -> PletlangChar | None:
+        pass
 

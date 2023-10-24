@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class PletlangChar(Enum):
+class PletlangChar(IntEnum):
     """
     All of the 16 possible Pletlang characters, in enum form.
     """
