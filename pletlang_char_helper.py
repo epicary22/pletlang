@@ -18,7 +18,8 @@ class PletlangCharHelper:
         """
         if obj is str:
             return PletlangCharHelper.to_pletlang_char_from_char(obj)
-        return PletlangChar.A
+        elif obj is int:
+            return PletlangCharHelper.to_pletlang_char_from_int(obj)
 
     @staticmethod
     def __to_interpretable_char(string: str) -> str | None:
@@ -65,4 +66,5 @@ class PletlangCharHelper:
     @staticmethod
     def to_pletlang_char_from_int(pletlang_char_index: int) -> PletlangChar | None:
         if pletlang_char_index in PletlangCharHelper.VALID_INTS:
-            pass  # cont.
+            return [char for char in PletlangChar][pletlang_char_index]
+        return None
