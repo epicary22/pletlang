@@ -31,7 +31,7 @@ class PletlangCharHelper:
         if len(string) == 0:
             return None
         char_to_check = string[0]
-        if char_to_check not in [PletlangCharHelper.VALID_CHARS]:
+        if char_to_check not in PletlangCharHelper.VALID_CHARS:
             return None
         return char_to_check
 
@@ -64,5 +64,5 @@ class PletlangCharHelper:
 
     @staticmethod
     def to_pletlang_char_from_int(pletlang_char_index: int) -> PletlangChar | None:
-        pass
-
+        if pletlang_char_index in PletlangCharHelper.VALID_INTS:
+            pass  # cont.
