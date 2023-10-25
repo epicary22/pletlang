@@ -6,7 +6,7 @@ class PletlangCharHelper:
     VALID_CHARS = [']', 'd', 'm', 'n', 'v', 'w', 'z', 'j', 'a', 'i', 'o', 'u', ',', '\'', '\\', '[']
 
     @staticmethod
-    def to_pletlang_char(obj: int | str | None):
+    def to_pletlang_char(obj: int | str | None = None):
         """
         Finds the Pletlang character representation of a given int, str, or None.\n
         ints between 0 and 15 are valid. ints < 0 are interpreted as 0. ints > 15 are interpreted as 15.\n
@@ -16,10 +16,11 @@ class PletlangCharHelper:
         :param obj: The object to be translated into a single PletlangChar.
         :return: The PletlangChar that the object passed in represents.
         """
-        if obj is str:
+        if type(obj) is str:
             return PletlangCharHelper.to_pletlang_char_from_char(obj)
-        elif obj is int:
+        elif type(obj) is int:
             return PletlangCharHelper.to_pletlang_char_from_int(obj)
+        return None
 
     @staticmethod
     def __to_interpretable_char(string: str) -> str | None:
@@ -31,7 +32,7 @@ class PletlangCharHelper:
         """
         if len(string) == 0:
             return None
-        char_to_check = string[0]
+        char_to_check = string[0].lower()
         if char_to_check not in PletlangCharHelper.VALID_CHARS:
             return None
         return char_to_check

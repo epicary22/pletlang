@@ -21,4 +21,3 @@ class PletlangChar(IntEnum):
     HI = 0b1101
     BACKSLASH = 0b1110
     START = 0b1111
-    # TODO change up this data structure? It seems a little backwards...
