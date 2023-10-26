@@ -25,7 +25,7 @@ class PletlangCharHelper:
             return PletlangCharHelper.to_pletlang_char_from_char(obj)
         elif type(obj) is int:
             return PletlangCharHelper.to_pletlang_char_from_int(obj)
-        return None
+        return PletlangChar.END
 
     @staticmethod
     def __to_interpretable_char(string: str) -> Union[str, None]:

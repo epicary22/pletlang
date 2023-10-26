@@ -3,7 +3,7 @@ from enum import IntEnum
 
 class PletlangChar(IntEnum):
     """
-    All of the 16 posible Pletlang characters, in enum form.
+    All of the 16 possible Pletlang characters, in enum form.
     """
     END = 0b0000
     D = 0b0001
