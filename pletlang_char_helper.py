@@ -7,6 +7,7 @@ class PletlangCharHelper:
     Helper methods and values for the PletlangChar enum.\n
     Any operations for PletlangChars can be found here.
     """
+    VALUES = [char for char in PletlangChar]
     VALID_INTS = [char.value for char in PletlangChar]
     VALID_CHARS = [']', 'd', 'm', 'n', 'v', 'w', 'z', 'j', 'a', 'i', 'o', 'u', ',', '\'', '\\', '[']
 
