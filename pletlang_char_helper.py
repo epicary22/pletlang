@@ -17,7 +17,7 @@ class PletlangCharHelper:
         ints between 0 and 15 are valid. ints < 0 are interpreted as 0. ints > 15 are interpreted as 15.\n
         strs only have their first character interpreted. Invalid first characters are interpreted as ' '.
         If the str is '', it is interpreted as ' '.\n
-        None is interpreted as PletlangChar.END.\n
+        None is interpreted as None.\n
         :param obj: The object to be translated into a single PletlangChar.
         :return: The PletlangChar that the object passed in represents.
         """
@@ -25,7 +25,7 @@ class PletlangCharHelper:
             return PletlangCharHelper.to_pletlang_char_from_char(obj)
         elif type(obj) is int:
             return PletlangCharHelper.to_pletlang_char_from_int(obj)
-        return PletlangChar.END
+        return None
 
     @staticmethod
     def __to_interpretable_char(string: str) -> Union[str, None]:
