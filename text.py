@@ -1,9 +1,7 @@
 from pletlang_char import PletlangChar
 from pletlang_char_helper import PletlangCharHelper
 from pletlang_string import PletlangString
+from pletlang_int import PletlangInt
 
-print(PletlangCharHelper.to_pletlang_char("z").name)
-
-p = PletlangString([PletlangChar.START, PletlangChar.A, PletlangChar.I])
-p.concat_pletlang_char(PletlangChar.END)
-print(p.pletlang_chars)
+p = PletlangString([PletlangChar.START, PletlangChar.A, PletlangChar.I, PletlangChar.HI, PletlangChar.W, PletlangChar.O, PletlangChar.M, PletlangChar.END])
+print(p.as_literal_binary_string())

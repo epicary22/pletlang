@@ -30,3 +30,15 @@ class PletlangInt:
 			return PletlangCharHelper.VALUES[integer]
 		return None
 	
+	@staticmethod
+	def to_string(pletlang_char: PletlangChar) -> Union[str, None]:
+		"""
+		Creates a Binary Pletlang string representation of the given int.\n
+		If the integer cannot be translated into a PletlangChar, None is returned.\n
+		:param pletlang_char: The integer to be converted into a Binary Pletlang string.
+		:return: The Binary Pletlang representation of the integer.
+		"""
+		if pletlang_char in PletlangCharHelper.VALUES:
+			return bin(pletlang_char)[2:].zfill(4)
+		return None
+	

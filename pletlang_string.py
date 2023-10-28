@@ -1,6 +1,6 @@
 from pletlang_char import PletlangChar
 from pletlang_char_helper import PletlangCharHelper
-import pletlang_string
+from pletlang_int import PletlangInt
 
 
 class PletlangString:
@@ -13,8 +13,8 @@ class PletlangString:
 	def concat_pletlang_char(self, pletlang_char: PletlangChar) -> None:
 		self.pletlang_chars.append(pletlang_char)
 	
-	def as_binary(self):
-		pass
+	def as_literal_binary_string(self) -> str:
+		return " ".join([PletlangInt.to_string(pletlang_char) for pletlang_char in self.pletlang_chars])
 	
 	def as_alpha(self):
 		pass
