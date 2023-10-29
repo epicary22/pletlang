@@ -21,3 +21,5 @@ class PletlangChar(IntEnum):
     HI = 0b1101
     BACKSLASH = 0b1110
     START = 0b1111
+    
+    # TODO you realize that you can do @classmethod's right? Do them for PletlangChar.of(obj: Any) things!
