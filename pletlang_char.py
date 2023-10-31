@@ -1,4 +1,7 @@
 from enum import IntEnum
+from typing import Union
+from pletlang_int import PletlangInt
+from pletlang_alpha import PletlangAlpha
 
 
 class PletlangChar(IntEnum):
@@ -21,5 +24,3 @@ class PletlangChar(IntEnum):
     HI = 0b1101
     BACKSLASH = 0b1110
     START = 0b1111
-    
-    # TODO you realize that you can do @classmethod's right? Do them for PletlangChar.of(obj: Any) things!
