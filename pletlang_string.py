@@ -1,6 +1,7 @@
 from pletlang_char import PletlangChar
 from pletlang_char_helper import PletlangCharHelper
 from pletlang_int import PletlangInt
+from pletlang_alpha import PletlangAlpha
 
 
 class PletlangString:
@@ -17,7 +18,7 @@ class PletlangString:
 		return " ".join([PletlangInt.to_string(pletlang_char) for pletlang_char in self.pletlang_chars])
 	
 	def as_alpha(self):
-		pass
+		return "".join([PletlangAlpha.from_pletlang_char(pletlang_char) for pletlang_char in self.pletlang_chars])
 	
 	def as_phonemic(self):
 		pass
