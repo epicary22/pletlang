@@ -10,19 +10,22 @@ class PletlangAlpha:
 	VALUES = [']', 'd', 'm', 'n', 'v', 'w', 'z', 'j', 'a', 'i', 'o', 'u', ',', '\'', '\\', '[']
 	
 	@staticmethod
-	def from_pletlang_char(pletlang_char: PletlangChar) -> str:
+	def from_pletlang_char(pletlang_char: Union[PletlangChar | None]) -> str:
 		"""
 		Finds the char representation of a given PletlangChar.
+		Returns " " if None is passed in.
 		:param pletlang_char: The given PletlangChar.
 		:return: The char representation.
 		"""
-		# TODO add something where None -> " ".
+		if pletlang_char is None:
+			return " "
 		return PletlangAlpha.VALUES[pletlang_char.value]
 	
 	@staticmethod
 	def to_pletlang_char(alpha_char: str) -> Union[PletlangChar, None]:
 		"""
 		Finds the PletlangChar representation of a given char.
+		Returns None if the given char is not in PletlangAlpha.VALUES (such as " ").
 		:param alpha_char: The given char.
 		:return: The PletlangChar representation.
 		"""

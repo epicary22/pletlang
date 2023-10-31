@@ -15,6 +15,11 @@ class PletlangString:
 		self.pletlang_chars.append(pletlang_char)
 	
 	def as_literal_binary_string(self) -> str:
+		"""
+		The literal binary string representation of this PletlangString.
+		For example, [PletlangChar.START, PletlangChar.I, PletlangChar.END] -> 1111 1001 0000.
+		:return: The binary string representation of this PletlangString.
+		"""
 		return " ".join([PletlangInt.to_string(pletlang_char) for pletlang_char in self.pletlang_chars])
 	
 	def as_alpha(self):
