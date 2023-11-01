@@ -3,5 +3,5 @@ from pletlang_char_helper import PletlangCharHelper
 from pletlang_string import PletlangString
 from pletlang_int import PletlangInt
 
-p = PletlangString([PletlangChar.START, PletlangChar.A, PletlangChar.I, PletlangChar.HI, None, PletlangChar.W, PletlangChar.O, PletlangChar.M, PletlangChar.END])
+p = PletlangString(reversed(PletlangChar.ITEMS))
 print(p.as_alpha())
