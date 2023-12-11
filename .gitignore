@@ -2,3 +2,4 @@ py/venv
 py/__pycache__
 java/.idea
 .idea
+java/pletlang/out
