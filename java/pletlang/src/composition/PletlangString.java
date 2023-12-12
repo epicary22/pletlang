@@ -1,43 +1,63 @@
 package composition;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
- * TODO
+ * A wrapper class for ArrayLists of PletlangChars, which implements basic String functionalities.
  */
 public class PletlangString
 {
     private final ArrayList<PletlangChar> chars;
 
     /**
-     * TODO
-     * @param chars
+     * Creates a new PletlangString.
+     * @param chars The list of PletlangChars this PletlangString will represent.
+     *              Will not be changed by any methods called on this PletlangString.
      */
-    public PletlangString(ArrayList<PletlangChar> chars)
+    public PletlangString(final ArrayList<PletlangChar> chars)
     {
         this.chars = new ArrayList<>(chars.size());
         this.chars.addAll(chars);
     }
 
+    /**
+     * Returns a String representation of this PletlangString.<br>
+     * Each PletlangChar is represented with its enumerated name.
+     * @return A String representation of this PletlangString.
+     */
     @Override
     public String toString()
     {
-        StringBuilder string = new StringBuilder(this.chars.size() * 5);
+        String stringRepresentation = "";
         for (int i = 0; i < this.chars.size(); i++)
         {
-            String baseBinaryString = Integer.toBinaryString(this.chars.get(i).getValue());
-            for (int z = baseBinaryString.length(); z < 4; z++)
-            {
-                string.append("0");
-            }
-            string.append(baseBinaryString);
+            stringRepresentation += this.chars.get(i);
             if (i < this.chars.size() - 1)
             {
-                string.append(" ");
+                stringRepresentation += " ";
             }
         }
 
-        return string.toString();
+        return stringRepresentation;
+    }
+
+    /**
+     * Returns a binary String representation of this PletlangString.<br>
+     * Each PletlangChar is represented with its nybble value in binary.
+     * @return A binary String representation of this PletlangString.
+     */
+    public String toBinaryString()
+    {
+        String stringRepresentation = "";
+        for (int i = 0; i < this.chars.size(); i++)
+        {
+            stringRepresentation += this.chars.get(i).toBinaryString();
+            if (i < this.chars.size() - 1)
+            {
+                stringRepresentation += " ";
+            }
+        }
+
+        return stringRepresentation;
     }
 }

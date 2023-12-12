@@ -1,7 +1,18 @@
-package composition;
+import composition.PletlangChar;
+import composition.PletlangString;
 
 import java.util.List;
 import java.util.ArrayList;
+
+/*
+TODO
+====
+
+ - PletlangWriter
+ - Some way of encoding Pletlang into PletASM... this is the difficult part, isn't it?
+   o This means I need to make some standard on what PletASM is. I need to write that before
+     I can encode it or decode it.
+ */
 
 public class TestClass
 {
@@ -20,7 +31,7 @@ public class TestClass
                                         PletlangChar.END
                                 )
                         )
-                )
+                ).toBinaryString()
         );
     }
 }

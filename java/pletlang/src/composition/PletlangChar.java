@@ -125,4 +125,21 @@ public enum PletlangChar
     {
         return this.value;
     }
+
+    @Override
+    public String toString()
+    {
+        return this.name();
+    }
+
+    public String toBinaryString()
+    {
+        String binaryString = Integer.toBinaryString(this.value);
+        String stringRepresentation = binaryString;
+        for (int i = binaryString.length(); i < 4; i++)
+        {
+            stringRepresentation = '0' + stringRepresentation;
+        }
+        return stringRepresentation;
+    }
 }
