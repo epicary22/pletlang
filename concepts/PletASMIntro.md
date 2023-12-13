@@ -4,7 +4,7 @@
 PletASM is a way of defining operations that Pletlang can run.
 For instance, the Pletlang string:
 
-`0.........1....2.........3.........4.`  
+`0.........1....2.........3.........4........`  
 `1110 1000 0001 1000 0000 1111 1111 0000 0000`
 
 Defines the color #80ff00, a greenish yellow.
