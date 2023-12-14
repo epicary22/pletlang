@@ -23,10 +23,10 @@ All usable color modes are:
     
  * `hex <nnnnnn>`
     * Corresponds to the mode argument being `0001`.
-    * Requires six nybbles: the first pair represents the red byte, the second pair represents the blue byte, and the third pair represents the green byte.
-    * Sets the color of speech with the HTML standard for 3-byte hex colors.
+    * The six nybbles are interpreted as a `#xxxxxx` color.
+    * ex. `color hex ff0080` corresponds to the color `#ff0080`.
     
   * `sixteen <n>`
     * Corresponds to the mode argument being `0010`.
-    * Requires one nybble, which can represent up to 16 different colors.
-    * Sets the color of speech with the ANSI standard for 16-color display.
+    * The one nybble is interpreted as an ANSI-16-color-standard color.
+    * ex. `color sixteen 6` refers to terminal-standard dimmed cyan. (`\e[1;36m`)
