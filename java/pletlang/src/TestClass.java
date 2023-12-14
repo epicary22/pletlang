@@ -1,8 +1,11 @@
 import composition.PletlangChar;
 import composition.PletlangString;
+import io.PletlangReader;
+import io.InvalidFiletypeException;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.io.File;
 
 /*
 TODO
@@ -33,5 +36,14 @@ public class TestClass
                         )
                 ).toBinaryString()
         );
+
+        try (PletlangReader p = new PletlangReader(new File("")))
+        {
+            p.next();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
