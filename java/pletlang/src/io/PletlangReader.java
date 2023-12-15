@@ -14,21 +14,22 @@ import java.util.Scanner;
 public class PletlangReader implements Closeable
 {
     public static final String PLETLANG_FILE_EXTENSION = ".plet";
-    private final File fromFile;
+    public static final String NYBBLE_PATTERN = "\\d{4}";
+    private final File inputFile;
     private final Scanner fileScanner;
 
     /**
      * TODO
-     * @param fromFile The .plet file to read from.
+     * @param inputFile The .plet file to read from.
      */
-    public PletlangReader(File fromFile) throws FileNotFoundException, InvalidFiletypeException
+    public PletlangReader(File inputFile) throws FileNotFoundException, InvalidFiletypeException
     {
-        if (!isReadableFiletype(fromFile))
+        if (!isReadableFiletype(inputFile))
         {
-            throw new InvalidFiletypeException(PLETLANG_FILE_EXTENSION, fromFile);
+            throw new InvalidFiletypeException(PLETLANG_FILE_EXTENSION, inputFile);
         }
-        this.fromFile = fromFile;
-        this.fileScanner = new Scanner(this.fromFile);
+        this.inputFile = inputFile;
+        this.fileScanner = new Scanner(this.inputFile);
     }
 
     /**
@@ -47,7 +48,27 @@ public class PletlangReader implements Closeable
      */
     public PletlangChar next()
     {
+        // TODO finish this
+        this.fileScanner.next(NYBBLE_PATTERN);
         return null;
+    }
+
+    /**
+     * Checks if the file has a next nybble to read in.
+     * @return Whether the file has a next nybble to read in.
+     */
+    public boolean hasNext()
+    {
+        return this.fileScanner.hasNext(NYBBLE_PATTERN);
+    }
+
+    /**
+     * Gets the file that this PletlangReader is reading from.
+     * @return The file that this PletlangReader is reading from.
+     */
+    public File getInputFile()
+    {
+        return this.inputFile;
     }
 
     // TODO is this @Override?
