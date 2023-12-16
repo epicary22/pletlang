@@ -17,16 +17,29 @@ For instance:
 `color hex ffff00`. This sets the color of speech to a bright yellow.
 
 All usable color modes are:
- * `default`
-    * Corresponds to the mode argument being `0000`.
-    * Sets the color of speech back to the default.
-    
+ * `off`
+    * Corresponds to the mode argument being `0000`
+    * Turns color off. 
+
  * `hex <nnnnnn>`
     * Corresponds to the mode argument being `0001`.
     * The six nybbles are interpreted as a `#xxxxxx` color.
-    * ex. `color hex ff0080` corresponds to the color `#ff0080`.
+    * ex. `color hex ff0080` corresponds to the color `#ff0080`. (`\e[38;2;256;0;128m`)
     
-  * `sixteen <n>`
+ * `ansi16 <n>`
     * Corresponds to the mode argument being `0010`.
     * The one nybble is interpreted as an ANSI-16-color-standard color.
-    * ex. `color sixteen 6` refers to terminal-standard dimmed cyan. (`\e[1;36m`)
+    * ex. `color ansi16 6` refers to terminal-standard dimmed cyan. (`\e[1;36m`)
+   
+ * `ansi256 <nn>`
+    * Corresponds to the mode argument being `0011`.
+    * The two nybbles are interpreted as an ANSI 256-color color.
+    * ex. `color ansi256 9a` refers to a vibrant greenish yellow. (`\e[38;5;154m`)
+
+ * `default`
+    * Corresponds to the mode argument being `1110`.
+    * Sets the color of speech back to the default.
+
+ * `on`
+    * Corresponds to the mode argument being `1111`
+    * Turns color on.
