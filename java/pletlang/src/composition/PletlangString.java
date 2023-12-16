@@ -21,6 +21,35 @@ public class PletlangString
     }
 
     /**
+     * Adds a singular PletlangChar to the end of this PletlangString.
+     * @param character The PletlangChar to add.
+     */
+    public void add(PletlangChar character)
+    {
+        this.chars.add(character);
+    }
+
+    /**
+     * Adds the given PletlangString to the end of this current PletlangString.
+     * @param string The PletlangString to add.
+     */
+    public void add(PletlangString string)
+    {
+        this.chars.addAll(string.toPletlangCharArrayList());
+    }
+
+    /**
+     * Returns this PletlangString as an ArrayList of its PletlangChars.
+     * @return This PletlangString as an ArrayList of its PletlangChars.
+     */
+    public ArrayList<PletlangChar> toPletlangCharArrayList()
+    {
+        ArrayList<PletlangChar> copyString = new ArrayList<>(this.chars.size());
+        copyString.addAll(this.chars);
+        return copyString;
+    }
+
+    /**
      * Returns a String representation of this PletlangString.<br>
      * Each PletlangChar is represented with its enumerated name.
      * @return A String representation of this PletlangString.

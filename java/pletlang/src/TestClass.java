@@ -28,8 +28,8 @@ public class TestClass
                         new ArrayList<>(
                                 List.of(
                                         PletlangChar.START,
+                                        PletlangChar.W,
                                         PletlangChar.A,
-                                        PletlangChar.I,
                                         PletlangChar.HI,
                                         PletlangChar.END
                                 )
@@ -37,9 +37,9 @@ public class TestClass
                 ).toBinaryString()
         );
 
-        try (PletlangReader p = new PletlangReader(new File("")))
+        try (PletlangReader p = new PletlangReader(new File("pletlang_files/vi.plet")))
         {
-            p.next();
+            System.out.println(p.next());
         }
         catch (Exception e)
         {
