@@ -35,7 +35,7 @@ public class InvalidFiletypeException extends IOException
      */
     public InvalidFiletypeException(String intendedFiletype, File invalidFile)
     {
-        super(String.format("File `%s` is not of type `%s`",
+        super(String.format("File `%s` is not of type `%s`.",
                 invalidFile.getAbsolutePath(), intendedFiletype));
     }
 }
