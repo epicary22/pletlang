@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * TODO
  * A reader for .plet files which implements Scanner methods.<br>
- * Transmutes binary Pletlang into PletlangStrings.
+ * Transmutes Pletlang into PletlangStrings.
  */
 public class PletlangReader implements Closeable
 {
@@ -49,8 +49,9 @@ public class PletlangReader implements Closeable
     public PletlangChar next()
     {
         // TODO finish this
-        this.fileScanner.next(NYBBLE_PATTERN);
-        return null;
+        String nybble = this.fileScanner.next(NYBBLE_PATTERN);
+        int nybbleValue = Integer.parseInt(nybble, 2);
+        return PletlangChar.of(nybbleValue);
     }
 
     /**

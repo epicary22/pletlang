@@ -126,20 +126,49 @@ public enum PletlangChar
         return this.value;
     }
 
+    /**
+     * Returns the PletlangChar representation of an integer value between 0 and 15.<br>
+     * If the value is not between 0 and 15, it will return null.
+     * @param nybble An integer value between 0 and 15 that corresponds to the wanted PletlangChar's
+     *               value.
+     * @return The PletlangChar with `nybble` as its value. null if there is no such PletlangChar.
+     */
+    public static PletlangChar of(int nybble)
+    {
+        for (PletlangChar p : PletlangChar.values())
+        {
+            if (nybble == p.getValue())
+            {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the enumerated name of this PletlangChar.<br>
+     * ex. <code>PletlangChar.HI.toString() -> "HI"</code>
+     * @return The enumerated name of this PletlangChar.
+     */
     @Override
     public String toString()
     {
         return this.name();
     }
 
-    public String toBinaryString()
+    /**
+     * Returns the 4-character nybble string value of this PletlangChar.<br>
+     * ex. <code>PletlangChar.HI.toNybbleString() -> "1101"</code>
+     * @return the 4-character nybble string value of this PletlangChar.
+     */
+    public String toNybbleString()
     {
         String binaryString = Integer.toBinaryString(this.value);
-        String stringRepresentation = binaryString;
+        String nybbleString = binaryString;
         for (int i = binaryString.length(); i < 4; i++)
         {
-            stringRepresentation = '0' + stringRepresentation;
+            nybbleString = '0' + nybbleString;
         }
-        return stringRepresentation;
+        return nybbleString;
     }
 }

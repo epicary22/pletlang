@@ -80,7 +80,7 @@ public class PletlangString
         String stringRepresentation = "";
         for (int i = 0; i < this.chars.size(); i++)
         {
-            stringRepresentation += this.chars.get(i).toBinaryString();
+            stringRepresentation += this.chars.get(i).toNybbleString();
             if (i < this.chars.size() - 1)
             {
                 stringRepresentation += " ";
