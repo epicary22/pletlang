@@ -1,10 +1,11 @@
 package composition;
 
 // I can do this with JSON. Will be prototyping in Python.
+import java.util.TreeMap;
 
 public class PletlangEscapeSequence
 {
-    public static dictionary = new TreeMap<>
+    public static Object dictionary = new TreeMap().put("hello", "world");
 
     public PletlangEscapeSequenceType type;
 
@@ -12,9 +13,9 @@ public class PletlangEscapeSequence
     {
 
     }
-
-    public PletlangEscapeSequence getNext(PletlangString )
-    {
-
-    }
+//
+//    public PletlangEscapeSequence getNext(PletlangString )
+//    {
+//
+//    }
 }

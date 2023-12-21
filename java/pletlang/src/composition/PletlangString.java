@@ -1,6 +1,7 @@
 package composition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A wrapper class for ArrayLists of PletlangChars, which implements basic String functionalities.
@@ -18,6 +19,16 @@ public class PletlangString
     {
         this.chars = new ArrayList<>(chars.size());
         this.chars.addAll(chars);
+    }
+
+    /**
+     * Creates a new PletlangString.
+     * @param chars The chars to turn into a PletlangString.
+     */
+    public PletlangString(final PletlangChar... chars)
+    {
+        this.chars = new ArrayList<>(chars.length);
+        this.chars.addAll(Arrays.asList(chars));
     }
 
     /**
