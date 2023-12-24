@@ -2,12 +2,14 @@ package composition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * A wrapper class for ArrayLists of PletlangChars, which implements basic String functionalities.
  */
 public class PletlangString
 {
+
     private final ArrayList<PletlangChar> chars;
 
     /**
@@ -38,6 +40,16 @@ public class PletlangString
     public void add(PletlangChar character)
     {
         this.chars.add(character);
+    }
+
+    /**
+     * Gets a singular PletlangChar from this PletlangString, at the specified index.
+     * @param index The index to get the PletlangChar from.
+     * @return The PletlangChar at the given index.
+     */
+    public PletlangChar pletlangCharAt(int index)
+    {
+        return this.chars.get(index);
     }
 
     /**

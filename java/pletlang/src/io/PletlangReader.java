@@ -1,9 +1,13 @@
 package io;
 
 import composition.PletlangChar;
+import composition.PletlangString;
+
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.Closeable;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -14,7 +18,7 @@ import java.util.Scanner;
 public class PletlangReader implements Closeable
 {
     public static final String PLETLANG_FILE_EXTENSION = ".plet";
-    public static final String NYBBLE_PATTERN = "\\d{4}";
+    public static final String NYBBLE_PATTERN = "[01]{4}";
     private final File inputFile;
     private final Scanner fileScanner;
 
@@ -45,13 +49,49 @@ public class PletlangReader implements Closeable
     /**
      * Returns the next nybble from this PletlangReader's file, enumerated as a PletlangChar.
      * @return The PletlangChar representing the next nybble found in this PletlangReader's file.
+     * @throws EOFException The end of the file has been reached, and there is no more to read.
+     * @throws InputMismatchException The next token is not a readable nybble.
      */
-    public PletlangChar next()
+    public PletlangChar next() throws EOFException
     {
-        // TODO finish this
+        if (!this.fileScanner.hasNext())
+        {
+            throw new EOFException("The input file has no more tokens to read.");
+        }
+        else if (!this.hasNext())
+        {
+            throw new InputMismatchException("Next token `" + this.fileScanner.next() + "` is " +
+                "not a nybble in the form of /" + NYBBLE_PATTERN + "/.");
+        }
         String nybble = this.fileScanner.next(NYBBLE_PATTERN);
         int nybbleValue = Integer.parseInt(nybble, 2);
         return PletlangChar.of(nybbleValue);
+    }
+
+    /**
+     * Returns the next <code>amount</code> nybbles from this Pletlang file, enumerated into a
+     * PletlangString. If more nybbles are requested than there are left in the file, this will
+     * only read in the remaining nybbles.
+     * @param amount The number of nybbles to read in from the file. If more than the amount of
+     *               nybbles left in the file, it will only read in the nybbles left.
+     * @return The nybbles read in turned into a PletlangString.
+     */
+    public PletlangString next(int amount)
+    {
+        PletlangString nextCharacters = new PletlangString();
+        for (int i = 0; i < amount; i++)
+        {
+            try
+            {
+                PletlangChar nextChar = this.next();
+                nextCharacters.add(nextChar);
+            }
+            catch (EOFException e)
+            {
+                break;
+            }
+        }
+        return nextCharacters;
     }
 
     /**
@@ -72,11 +112,10 @@ public class PletlangReader implements Closeable
         return this.inputFile;
     }
 
-    // TODO is this @Override?
-
     /**
      * Closes the underlying readers in this PletlangReader.
      */
+    @Override
     public void close()
     {
         this.fileScanner.close();

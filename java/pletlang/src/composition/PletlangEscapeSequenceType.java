@@ -62,12 +62,15 @@ public enum PletlangEscapeSequenceType
      * Creates the definition for a Pletlang Escape Sequence Type, given its identifier and number
      * nybbles required as arguments.
      *
-     * @param pletlangIdentifier The Pletlang identifier for this escape sequence. Does NOT contain the initial
-     *                           PletlangChar.ESC character at the beginning that signifies an escape code.
+     * @param pletlangIdentifier The Pletlang identifier for this escape sequence. Does NOT contain
+     *                           the initial PletlangChar.ESC character at the beginning that
+     *                           signifies an escape code.
      * @param pletAsmIdentifier  The PletASM identifier for this escape sequence.
-     * @param argumentNybbles    The number of nybbles that this escape sequence takes as an argument.
+     * @param argumentNybbles    The number of nybbles that this escape sequence takes as an
+     *                           argument.
      */
-    PletlangEscapeSequenceType(PletlangString pletlangIdentifier, String pletAsmIdentifier, int argumentNybbles)
+    PletlangEscapeSequenceType(PletlangString pletlangIdentifier, String pletAsmIdentifier,
+                               int argumentNybbles)
     {
         this.pletlangIdentifier = pletlangIdentifier;
         this.pletAsmIdentifier = pletAsmIdentifier;
