@@ -7,6 +7,7 @@ package composition;
  * or PletASM correspond to each other.<br>
  * Each item's description declares its Pletlang representation, minus the 1110 at the start, as
  * well as its PletASM function name. It also says how many nybbles it takes as arguments.
+ * TODO rewrite this wordy ahh description
  */
 public enum PletlangEscapeSequenceType
 {
