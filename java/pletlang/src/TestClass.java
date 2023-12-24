@@ -39,7 +39,7 @@ public class TestClass
 
         try (PletlangReader p = new PletlangReader(new File("pletlang_files/vi.plet")))
         {
-            System.out.println(p.next(5));
+            System.out.println(p.readAll());
         }
         catch (Exception e)
         {

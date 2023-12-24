@@ -49,16 +49,15 @@ public class PletlangReader implements Closeable
     /**
      * Returns the next nybble from this PletlangReader's file, enumerated as a PletlangChar.
      * @return The PletlangChar representing the next nybble found in this PletlangReader's file.
-     * @throws EOFException The end of the file has been reached, and there is no more to read.
      * @throws InputMismatchException The next token is not a readable nybble.
      */
-    public PletlangChar next() throws EOFException
+    public PletlangChar next() // throws EOFException
     {
-        if (!this.fileScanner.hasNext())
-        {
-            throw new EOFException("The input file has no more tokens to read.");
-        }
-        else if (!this.hasNext())
+//        if (!this.fileScanner.hasNext())
+//        {
+//            throw new EOFException("The input file has no more tokens to read.");
+//        }
+        if (!this.hasNext())
         {
             throw new InputMismatchException("Next token `" + this.fileScanner.next() + "` is " +
                 "not a nybble in the form of /" + NYBBLE_PATTERN + "/.");
@@ -86,12 +85,22 @@ public class PletlangReader implements Closeable
                 PletlangChar nextChar = this.next();
                 nextCharacters.add(nextChar);
             }
-            catch (EOFException e)
+            catch (InputMismatchException e)
             {
                 break;
             }
         }
         return nextCharacters;
+    }
+
+    public PletlangString readAll()
+    {
+        PletlangString allChars = new PletlangString();
+        while (this.hasNext())
+        {
+            allChars.add(this.next());
+        }
+        return allChars;
     }
 
     /**
