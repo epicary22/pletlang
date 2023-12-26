@@ -2,7 +2,6 @@ package composition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 
 /**
  * A wrapper class for ArrayLists of PletlangChars, which implements basic String functionalities.
@@ -58,18 +57,37 @@ public class PletlangString
      */
     public void add(PletlangString string)
     {
-        this.chars.addAll(string.toPletlangCharArrayList());
+        this.chars.addAll(string.toArrayList());
     }
 
     /**
      * Returns this PletlangString as an ArrayList of its PletlangChars.
      * @return This PletlangString as an ArrayList of its PletlangChars.
      */
-    public ArrayList<PletlangChar> toPletlangCharArrayList()
+    public ArrayList<PletlangChar> toArrayList()
     {
         ArrayList<PletlangChar> copyString = new ArrayList<>(this.chars.size());
         copyString.addAll(this.chars);
         return copyString;
+    }
+
+    /**
+     * Returns the number of characters in this PletlangString.
+     * @return The number of characters in this PletlangString.
+     */
+    public int length()
+    {
+        return this.chars.size();
+    }
+
+    /**
+     * Creates a copy of this PletlangString. Is not connected at all to the PletlangString it was
+     * copied from.
+     * @return A copy of this PletlangString.
+     */
+    public PletlangString copy()
+    {
+        return new PletlangString(new ArrayList<>(this.chars));
     }
 
     /**

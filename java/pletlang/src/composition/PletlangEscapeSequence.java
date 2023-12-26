@@ -1,7 +1,7 @@
 package composition;
 
-// I can do this with JSON. Will be prototyping in Python.
-import java.util.TreeMap;
+import java.util.Map;
+import java.util.HashMap;
 
 public class PletlangEscapeSequence
 {
@@ -12,9 +12,4 @@ public class PletlangEscapeSequence
     {
 
     }
-//
-//    public PletlangEscapeSequence getNext(PletlangString )
-//    {
-//
-//    }
 }

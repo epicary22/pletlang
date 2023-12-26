@@ -106,4 +106,14 @@ public enum PletlangEscapeSequenceType
     {
         return this.pletAsmIdentifier;
     }
+
+    /**
+     * Finds the number of nybbles that this Pletlang escape sequence needs, including its escape
+     * sequence identifier nybbles and its argument nybbles.
+     * @return The number of nybbles that this Pletlang escape sequence needs.
+     */
+    public int getNybbleLength()
+    {
+        return this.pletlangIdentifier.length() + this.argumentNybbles;
+    }
 }
