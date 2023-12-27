@@ -12,6 +12,10 @@ package composition;
 public enum PletlangEscapeSequenceType
 {
     /**
+     * The Pletlang Escape Sequence Type for invalid escape sequences.
+     */
+    INVALID(new PletlangString(), "invalid", Integer.MAX_VALUE),
+    /**
      * Pletlang: <code>1000 0000</code><br>PletASM: <code>color off</code><br>
      * 0 argument nybbles.
      */
@@ -78,6 +82,29 @@ public enum PletlangEscapeSequenceType
     }
 
     /**
+     * Finds the Pletlang Escape Sequence Type of the given PletlangString.
+     * This means that the PletlangString starts with a Pletlang Escape Sequence Identifier and is
+     * long enough to handle the arguments for that Escape Sequence.
+     * @param escapeString A PletlangString to find the Escape Sequence Type of. Does not have the
+     *                     initial PletlangChar.ESC that escape sequences start with.
+     * @return The Pletlang Escape Sequence Type of the given PletlangString. Returns
+     *         PletlangEscapeSequenceType.INVALID if no valid type is found or there is a valid type
+     *         but there aren't enough argument nybbles.
+     */
+    public static PletlangEscapeSequenceType of(PletlangString escapeString)
+    {
+        for (PletlangEscapeSequenceType escapeSequenceType : PletlangEscapeSequenceType.values())
+        {
+            if (escapeString.startsWith(escapeSequenceType.pletlangIdentifier)
+                && escapeString.length() >= escapeSequenceType.nybbleLength())
+            {
+                return escapeSequenceType;
+            }
+        }
+        return INVALID;
+    }
+
+    /**
      * Returns the number of argument nybbles this Pletlang Escape Sequence requires.
      *
      * @return The number of argument nybbles this Pletlang Escape Sequence requires.
@@ -112,7 +139,7 @@ public enum PletlangEscapeSequenceType
      * sequence identifier nybbles and its argument nybbles.
      * @return The number of nybbles that this Pletlang escape sequence needs.
      */
-    public int getNybbleLength()
+    public int nybbleLength()
     {
         return this.pletlangIdentifier.length() + this.argumentNybbles;
     }

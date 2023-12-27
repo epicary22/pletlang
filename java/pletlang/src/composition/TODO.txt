@@ -1,5 +1,0 @@
-make some way of transmuting the pletlang escape sequences into PletlangEscapeSequence objects...
-then from there, I can transmute the PletlangEscapeSequences into PletASMCommands
-then I can write them. sounds easy enough...?
-
-.plet -(PletlangReader)-> PletlangString -> PletlangCommandGrouper -(PletASMTranslator)-> -(PletASMWriter)-> .pletasm

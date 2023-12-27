@@ -22,6 +22,7 @@ public class TestClass
 {
     public static void main(String[] args)
     {
+        /*
         System.out.println("Wow this is a test class!");
         System.out.println(PletlangChar.A.getValue());
         System.out.println(
@@ -37,6 +38,7 @@ public class TestClass
                         )
                 ).toBinaryString()
         );
+        */
 
         try (PletlangReader p = new PletlangReader(new File("pletlang_files/vi.plet")))
         {

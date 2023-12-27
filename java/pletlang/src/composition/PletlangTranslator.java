@@ -32,16 +32,17 @@ public class PletlangTranslator
         PletlangString toTranslate = original.copy();
         StringBuilder translation = new StringBuilder();
 
-        for (int i = 0; i < toTranslate.length(); i++)
+        while (toTranslate.length() > 0)
         {
-            PletlangChar character = toTranslate.pletlangCharAt(i);
+            PletlangChar character = toTranslate.pletlangCharAt(0);
             String pletAsmCommand = "";
             switch (character)
             {
                 case ESC ->
                 {
-                    // TODO PletlangEscapeSequence.escapeSequenceAt();
-                    pletAsmCommand = "esc";
+                    PletlangEscapeSequence escapeSequence = new PletlangEscapeSequence(toTranslate);
+                    pletAsmCommand = escapeSequence.getPletAsmRepresentation();
+                    toTranslate = toTranslate.substring(escapeSequence.getLength());
                 }
                 case START -> pletAsmCommand = "start"; // TODO document this
                 case END -> pletAsmCommand = "end"; // TODO document this
@@ -51,6 +52,7 @@ public class PletlangTranslator
             }
             translation.append(pletAsmCommand);
             translation.append("\n");
+            toTranslate = toTranslate.substring(1);
         }
 
         return translation.toString();

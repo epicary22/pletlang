@@ -91,6 +91,64 @@ public class PletlangString
     }
 
     /**
+     * Creates a substring of this PletlangString, given a starting index.
+     * Does not affect the original PletlangString.
+     * @param startIndex The index to start the substring from. If this index is beyond the length
+     *                   of this PletlangString, it will return an empty PletlangString.
+     * @return The substring of this PletlangString.
+     */
+    public PletlangString substring(int startIndex)
+    {
+        ArrayList<PletlangChar> newChars = new ArrayList<>(this.chars.size() - startIndex);
+        for (int i = startIndex; i < this.chars.size(); i++)
+        {
+            newChars.add(this.chars.get(i));
+        }
+        return new PletlangString(newChars);
+    }
+
+    /**
+     * Creates a substring of this PletlangString, given a starting index and an ending index.
+     * Does not affect the original PletlangString.
+     * @param startIndex The index to start the substring from. If this index is beyond the length
+     *                   of this PletlangString, an empty PletlangString will be returned.
+     * @param endIndex The index to end the substring at. If this index is beyond the length of
+     *                 this PletlangString, it will be set to the final index of this string.
+     * @return The substring of this PletlangString.
+     */
+    public PletlangString substring(int startIndex, int endIndex)
+    {
+        endIndex = Math.min(this.chars.size(), endIndex);
+        ArrayList<PletlangChar> newChars = new ArrayList<>(endIndex - startIndex);
+        for (int i = startIndex; i < endIndex; i++)
+        {
+            newChars.add(this.chars.get(i));
+        }
+        return new PletlangString(newChars);
+    }
+
+    /**
+     * Determines whether this PletlangString starts with another PletlangString smaller than it.
+     * @param startString The PletlangString to check if this PletlangString begins with.
+     * @return true if this PletlangString starts with the startString.
+     */
+    public boolean startsWith(PletlangString startString)
+    {
+        if (startString.length() > this.length())
+        {
+            return false;
+        }
+        for (int i = 0; i < startString.length(); i++)
+        {
+            if (this.pletlangCharAt(i) != startString.pletlangCharAt(i))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Returns a String representation of this PletlangString.<br>
      * Each PletlangChar is represented with its enumerated name.
      * @return A String representation of this PletlangString.
@@ -107,7 +165,6 @@ public class PletlangString
                 stringRepresentation += " ";
             }
         }
-
         return stringRepresentation;
     }
 
@@ -127,7 +184,22 @@ public class PletlangString
                 stringRepresentation += " ";
             }
         }
+        return stringRepresentation;
+    }
 
+    /**
+     * Creates a hexadecimal String representation of this PletlangString, where each PletlangChar
+     * is one uppercase hex digit. There is no spacing between the digits.<br>
+     * For instance, the PletlangString `A I HI` would become `89C`.
+     * @return The hexadecimal String representation of this PletlangString.
+     */
+    public String toHexString()
+    {
+        String stringRepresentation = "";
+        for (int i = 0; i < this.chars.size(); i++)
+        {
+            stringRepresentation += Integer.toHexString(this.chars.get(i).getValue()).toUpperCase();
+        }
         return stringRepresentation;
     }
 }
