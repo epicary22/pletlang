@@ -1,11 +1,11 @@
 package composition;
 
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
 public class PletlangTranslator
 {
-    public static final EnumMap<PletlangChar, Character> pletAsmOutRepresentations = new EnumMap<>(Map.of());;
+    public static final HashMap<PletlangChar, Character> pletAsmOutRepresentations = new HashMap<>(Map.of());
 
 
     static {
@@ -27,7 +27,7 @@ public class PletlangTranslator
         pletAsmOutRepresentations.put(PletlangChar.START,   '[');
     }
 
-    public String toPletAsm(PletlangString original)
+    public static String toPletAsm(PletlangString original)
     {
         PletlangString toTranslate = original.copy();
         StringBuilder translation = new StringBuilder();
@@ -35,14 +35,22 @@ public class PletlangTranslator
         for (int i = 0; i < toTranslate.length(); i++)
         {
             PletlangChar character = toTranslate.pletlangCharAt(i);
-            if (character == PletlangChar.ESC)
+            String pletAsmCommand = "";
+            switch (character)
             {
-
+                case ESC ->
+                {
+                    // TODO PletlangEscapeSequence.escapeSequenceAt();
+                    pletAsmCommand = "esc";
+                }
+                case START -> pletAsmCommand = "start"; // TODO document this
+                case END -> pletAsmCommand = "end"; // TODO document this
+                case LO -> pletAsmCommand = "tone lo"; // TODO document this
+                case HI -> pletAsmCommand = "tone hi"; // TODO document this
+                default -> pletAsmCommand = "out " + pletAsmOutRepresentations.get(character);
             }
-            else
-            {
-                translation.append(String.format("out %c", pletAsmOutRepresentations.get(character)));
-            }
+            translation.append(pletAsmCommand);
+            translation.append("\n");
         }
 
         return translation.toString();

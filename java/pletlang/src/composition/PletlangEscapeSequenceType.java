@@ -52,7 +52,7 @@ public enum PletlangEscapeSequenceType
      * 0 argument nybbles.
      */
     ESC(new PletlangString(PletlangChar.ESC),
-            "???", 0);
+            "out \\", 0);
 
     private final PletlangString pletlangIdentifier;
     private final String pletAsmIdentifier;

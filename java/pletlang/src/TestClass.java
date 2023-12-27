@@ -1,5 +1,6 @@
 import composition.PletlangChar;
 import composition.PletlangString;
+import composition.PletlangTranslator;
 import io.PletlangReader;
 import io.InvalidFiletypeException;
 
@@ -39,7 +40,8 @@ public class TestClass
 
         try (PletlangReader p = new PletlangReader(new File("pletlang_files/vi.plet")))
         {
-            System.out.println(p.readAll());
+//            System.out.println(p.readAll());
+            System.out.println(PletlangTranslator.toPletAsm(p.readAll()));
         }
         catch (Exception e)
         {
