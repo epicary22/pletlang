@@ -29,7 +29,7 @@ All usable color modes are:
  * `ansi16 <n>`
     * Corresponds to the mode argument being `0010`.
     * The one nybble is interpreted as an ANSI-16-color-standard color.
-    * ex. `color ansi16 6` refers to terminal-standard dimmed cyan. (`\e[1;36m`)
+    * ex. `color ansi16 6` refers to terminal-standard dimmed cyan. (`\e[38;5;6m`)
    
  * `ansi256 <nn>`
     * Corresponds to the mode argument being `0011`.
