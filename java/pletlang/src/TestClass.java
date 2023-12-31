@@ -49,5 +49,7 @@ public class TestClass
         {
             System.out.println(e.getMessage());
         }
+
+        System.out.println((long) 0xFEDCBA9876543210);
     }
 }
