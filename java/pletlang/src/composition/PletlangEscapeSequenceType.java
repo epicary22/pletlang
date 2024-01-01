@@ -12,51 +12,94 @@ package composition;
 public enum PletlangEscapeSequenceType
 {
     /**
-     * The Pletlang Escape Sequence Type for invalid escape sequences.
-     */
-    INVALID(new PletlangString(), "invalid", Integer.MAX_VALUE),
-    /**
      * Pletlang: <code>1000 0000</code><br>PletASM: <code>color off</code><br>
-     * 0 argument nybbles.
+     * 0 argument nybbles.<br>
+     * Turns color of speech off.
      */
-    COLOR_OFF(new PletlangString(PletlangChar.A, PletlangChar.END),
-            "color off", 0),
+    COLOR_OFF(new PletlangString(PletlangChar.A, PletlangChar.END), "color off", 0),
     /**
      * Pletlang: <code>1000 0001</code><br>PletASM: <code>color hex</code><br>
-     * 6 argument nybbles.
+     * 6 argument nybbles.<br>
+     * Makes the color of speech the given hex color.
      */
-    COLOR_HEX(new PletlangString(PletlangChar.A, PletlangChar.D),
-            "color hex", 6),
+    COLOR_HEX(new PletlangString(PletlangChar.A, PletlangChar.D), "color hex", 6),
     /**
      * Pletlang: <code>1000 0010</code><br>PletASM: <code>color ansi16</code><br>
-     * 1 argument nybble.
+     * 1 argument nybble.<br>
+     * Makes the color of speech the given ANSI 256-color code, limited to the first 16 (common
+     * terminal-standard colors)
      */
-    COLOR_ANSI16(new PletlangString(PletlangChar.A, PletlangChar.M),
-            "color ansi16", 1),
+    COLOR_ANSI16(new PletlangString(PletlangChar.A, PletlangChar.M), "color ansi16", 1),
     /**
      * Pletlang: <code>1000 0011</code><br>PletASM: <code>color ansi256</code><br>
-     * 2 argument nybbles.
+     * 2 argument nybbles.<br>
+     * Makes the color of speech the given ANSI 256-color code.
      */
-    COLOR_ANSI256(new PletlangString(PletlangChar.A, PletlangChar.N),
-            "color ansi256", 2),
+    COLOR_ANSI256(new PletlangString(PletlangChar.A, PletlangChar.N), "color ansi256", 2),
     /**
      * Pletlang: <code>1000 1110</code><br>PletASM: <code>color default</code><br>
-     * 0 argument nybbles.
+     * 0 argument nybbles.<br>
+     * Sets the color of speech back to the global default.
      */
-    COLOR_DEFAULT(new PletlangString(PletlangChar.A, PletlangChar.ESC),
-            "color default", 0),
+    COLOR_DEFAULT(new PletlangString(PletlangChar.A, PletlangChar.ESC), "color default", 0),
     /**
      * Pletlang: <code>1000 1111</code><br>PletASM: <code>color on</code><br>
-     * 0 argument nybbles.
+     * 0 argument nybbles.<br>
+     * Turns color of speech on.
      */
-    COLOR_ON(new PletlangString(PletlangChar.A, PletlangChar.START),
-            "color on", 0),
+    COLOR_ON(new PletlangString(PletlangChar.A, PletlangChar.START), "color on", 0),
     /**
-     * Pletlang: <code>1110</code><br>PletASM: <code>???</code><br>
-     * 0 argument nybbles.
+     * Pletlang: <code>1110</code><br>PletASM: <code>out \</code><br>
+     * 0 argument nybbles.<br>
+     * Is a literal '\' character.
      */
-    ESC(new PletlangString(PletlangChar.ESC),
-            "out \\", 0);
+    ESC(new PletlangString(PletlangChar.ESC), "out \\", 0),
+    /**
+     * Pletlang: <code>1111 0001</code><br>PletASM: <code>num nybble</code><br>
+     * 1 argument nybble.<br>
+     * Is an unsigned 4-bit integer value.
+     */
+    NUM_NYBBLE(new PletlangString(PletlangChar.START, PletlangChar.D), "num nybble", 1),
+    /**
+     * Pletlang: <code>1111 0010</code><br>PletASM: <code>num byte</code><br>
+     * 2 argument nybbles.<br>
+     * Is a signed 1-byte integer value.
+     */
+    NUM_BYTE(new PletlangString(PletlangChar.START, PletlangChar.M), "num byte", 2),
+    /**
+     * Pletlang: <code>1111 0011</code><br>PletASM: <code>num short</code><br>
+     * 4 argument nybbles.<br>
+     * Is a signed 2-byte integer value.
+     */
+    NUM_SHORT(new PletlangString(PletlangChar.START, PletlangChar.N), "num short", 4),
+    /**
+     * Pletlang: <code>1111 0100</code><br>PletASM: <code>num int</code><br>
+     * 8 argument nybbles.<br>
+     * Is a signed 4-byte integer value.
+     */
+    NUM_INT(new PletlangString(PletlangChar.START, PletlangChar.V), "num int", 8),
+    /**
+     * Pletlang: <code>1111 0101</code><br>PletASM: <code>num long</code><br>
+     * 16 argument nybbles.<br>
+     * Is a signed 8-byte integer value.
+     */
+    NUM_LONG(new PletlangString(PletlangChar.START, PletlangChar.W), "num long", 16),
+    /**
+     * Pletlang: <code>1111 0110</code><br>PletASM: <code>num float</code><br>
+     * 8 argument nybbles.<br>
+     * Is an IEEE 754 standard single-precision floating-point number.
+     */
+    NUM_FLOAT(new PletlangString(PletlangChar.START, PletlangChar.Z), "num float", 8),
+    /**
+     * Pletlang: <code>1111 0111</code><br>PletASM: <code>num double</code><br>
+     * 16 argument nybbles.<br>
+     * Is an IEEE 754 standard double-precision floating-point number.
+     */
+    NUM_DOUBLE(new PletlangString(PletlangChar.START, PletlangChar.J), "num double", 16),
+    /**
+     * The Pletlang Escape Sequence Type for invalid escape sequences.
+     */
+    INVALID(new PletlangString(), "invalid", 0);
 
     private final PletlangString pletlangIdentifier;
     private final String pletAsmIdentifier;

@@ -50,6 +50,6 @@ public class TestClass
             System.out.println(e.getMessage());
         }
 
-        System.out.println((long) 0xFEDCBA9876543210);
+        System.out.println(Double.longBitsToDouble(0xEF0123456789ABCDL));
     }
 }
