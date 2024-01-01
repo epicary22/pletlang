@@ -40,7 +40,7 @@ public class TestClass
         );
         */
 
-        try (PletlangReader p = new PletlangReader(new File("pletlang_files/vi.plet")))
+        try (PletlangReader p = new PletlangReader(new File("pletlang_files/numbers.plet")))
         {
 //            System.out.println(p.readAll());
             System.out.println(PletlangTranslator.toPletAsm(p.readAll()));
@@ -49,7 +49,5 @@ public class TestClass
         {
             System.out.println(e.getMessage());
         }
-
-        System.out.println(Double.longBitsToDouble(0xEF0123456789ABCDL));
     }
 }
