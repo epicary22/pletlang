@@ -35,4 +35,4 @@ The different possible modes are:
  * `double <nnnnnnnnnnnnnnnn>` (mode argument: `0111`)
    * Interprets the 16 nybbles as a double-precision floating-point number, according to the IEEE 754 floating-point standard.
    * Can have values of Infinity, -Infinity, and NaN.
-   * ex. `num double EF0123456789ABCD` ~> -5.0748
+   * ex. `num double EF0123456789ABCD` ~> -5.0748e226
