@@ -1,0 +1,20 @@
+PLETLANG TODO
+=============
+
+/
+ o update .gitignore to not have unnecessary files
+ o Consider whether I want the Protogen rant on the main page here
+
+concepts/
+ o Archive PletASMDocs/TheEnvironment.md
+ o Describe the idea behind PletASM in PletASMDocs/README.md, also define a nybble, what <>'s mean, and <n>.
+ o Create a basic overview of plaintext Pletlang in PletlangDocs/
+ o Put the_basis_x.JPGs in their own folder, along with plan.md
+
+py/
+ o Detatch old, unnecessary code
+ o Start building a PletASM reader (STRETCH)
+
+java/
+ o Follow or put off TODOs.
+ 
